@@ -81,3 +81,9 @@ df_subset['pca-two'] = pca_result[:,1]
 df_subset['pca-three'] = pca_result[:,2]
 print('Explained variation per principal component: {}'.format(pca.explained_variance_ratio_))
 
+
+#TSNE
+time_start = time.time()
+tsne = TSNE(n_components=2, verbose=1, perplexity=40, n_iter=300)
+tsne_results = tsne.fit_transform(data_subset)
+print('t-SNE done! Time elapsed: {} seconds'.format(time.time()-time_start))
