@@ -26,3 +26,13 @@ mnist = fetch_openml('mnist_784')
 X = mnist.data / 255.0
 y = mnist.target
 print(X.shape, y.shape)
+
+
+feat_cols = [ 'pixel'+str(i) for i in range(X.shape[1]) ]
+df = pd.DataFrame(X,columns=feat_cols)
+df['y'] = y
+df['label'] = df['y'].apply(lambda i: str(i))
+X, y = None, None
+print('Size of the dataframe: {}'.format(df.shape))
+
+
