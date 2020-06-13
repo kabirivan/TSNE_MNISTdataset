@@ -40,3 +40,12 @@ print('Size of the dataframe: {}'.format(df.shape))
 np.random.seed(42)
 rndperm = np.random.permutation(df.shape[0])
 
+
+plt.gray()
+fig = plt.figure( figsize=(16,7) )
+for i in range(0,15):
+    ax = fig.add_subplot(3,5,i+1, title="Digit: {}".format(str(df.loc[rndperm[i],'label'])) )
+    
+ax.matshow(df.loc[rndperm[i],feat_cols].values.reshape((28,28)).astype(float))
+plt.show()
+
