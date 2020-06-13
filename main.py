@@ -36,3 +36,7 @@ X, y = None, None
 print('Size of the dataframe: {}'.format(df.shape))
 
 
+# For reproducability of the results
+np.random.seed(42)
+rndperm = np.random.permutation(df.shape[0])
+
