@@ -58,5 +58,26 @@ df['pca-two'] = pca_result[:,1]
 df['pca-three'] = pca_result[:,2]
 print('Explained variation per principal component: {}'.format(pca.explained_variance_ratio_))
 
+plt.figure(figsize=(16,10))
+sns.scatterplot(
+    x="pca-one", y="pca-two",
+    hue="y",
+    palette=sns.color_palette("hls", 10),
+    data=df.loc[rndperm,:],
+    legend="full",
+    alpha=0.3
+)
 
+
+# PCA with 100000 SAMPLES
+
+N = 10000
+df_subset = df.loc[rndperm[:N],:].copy()
+data_subset = df_subset[feat_cols].values
+pca = PCA(n_components=3)
+pca_result = pca.fit_transform(data_subset)
+df_subset['pca-one'] = pca_result[:,0]
+df_subset['pca-two'] = pca_result[:,1] 
+df_subset['pca-three'] = pca_result[:,2]
+print('Explained variation per principal component: {}'.format(pca.explained_variance_ratio_))
 
